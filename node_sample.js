@@ -42,8 +42,8 @@ var GoCode1 = {
     favMovie: "Chappie"
 };
 
-var Person = GoCode1;
-Person.favFood = "salad";
+var people = GoCode1;
+people.favFood = "salad";
 console.log(GoCode1.favFood);
 console.log("28 == \"28\": " + (28 == "28"));
 console.log("1 == '1': " + (1 == '1'));
@@ -59,7 +59,7 @@ var GoCode2 = {
 GoCode2.printFirstName();
 function doSomethingWorthless() {
     console.log("\nI am worthless");
-    console.log("this === global: " + this === global);
+    console.log("this === global: ", this === global);
 }
 
 doSomethingWorthless();
@@ -71,6 +71,9 @@ function GameUser() {
         targetPlayer.life += 1;
         console.log(this.name + " gave 1 life to " + targetPlayer.name);
     }
+}
+function User() {
+    this.name = "";
 }
 var GoCode3 = new GameUser();
 var GoCode4 = new GameUser();
@@ -92,3 +95,26 @@ console.log("Less: " + GoCode4.life);
 GameUser.prototype.magic = 60;
 console.log("More: " + GoCode3.magic);
 console.log("Less: " + GoCode4.magic);
+
+var movies = require('./movies');
+movies.printAvatar();
+console.log(movies.favMovie);
+require('./coder');
+require('./farmer');
+//Core Module doesn't need './'
+var fs = require('fs');
+fs.writeFileSync("bean.txt", "Bean is great");
+console.log(fs.readFileSync("bean.txt").toString());
+var path = require('path');
+var websiteHome = "D:/Code//Node//Stocking/Stocking/index.html";
+var websiteAbout = "D:\\Code\\Node\\Stocking\\Stocking\\about.html";
+console.log(path.normalize(websiteHome));
+console.log(path.dirname(websiteHome));
+console.log(path.normalize(websiteAbout));
+console.log(path.extname(websiteAbout));
+setInterval(function () {
+    console.log("beef");
+}, 2000);
+console.log(__dirname);
+console.log(__filename);
+
